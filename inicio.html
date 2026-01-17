@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17/03 Nós</title>
+    <link rel="icon" href="./fotos/icons8-netflix-24.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="./fotos/netflix-94.png" alt="" width="50px">
+        </div>
+        <nav>
+            <a href="inicio.html"> Início</a>
+            <a href="#"> Séries</a>
+            <a href="filme.html"> Filmes</a>
+            <a href="minhalista.html"> Minha lista</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <div class="conteudo">
+            <p class="title"> Ester e Lucas </p>
+            <p class="detalhes">
+                <samp> 17 de Março, 2 Temporadas</samp>
+                <samp class="stars">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                </samp>
+            </p>
+
+            <p class="descricao">
+                Texto
+            </p>
+
+            <div class="botoes">
+                <button><i class="fa-solid fa-play"></i>Continuar</button>
+                <button class="openmodal" data-modal="modal1">
+                    <i class="fa-solid fa-circle-info"></i> Sobre
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODAL ORIGINAL (INTACTO) ===== -->
+    <dialog id="modal1" class="netflix-modal">
+        <div class="previewModal">
+
+            <button class="closemodal" aria-label="Fechar modal">&times;</button>
+
+            <div class="previewModal-image">
+                <img src="./fotos/17_03.jpeg" alt="Nosso momento especial">
+            </div>
+
+            <div class="previewModal-content">
+                <h2 class="previewModal-title">O começo</h2>
+
+                <div class="previewModal-meta">
+                    <span>17 de março de 2024</span>
+                    <span> • </span>
+                    <span>inicio de tudo</span>
+                </div>
+
+                <p class="previewModal-description">
+                    Uma história sobre coragem, nervosismo e um amor que nasceu antes mesmo de ser oficial. Naquele dia,
+                    eu tremia. Passei a semana inteira pensando em te pedir em namoro, ensaiando mil vezes o que dizer,
+                    mas sem saber como o coração ia aguentar.
+
+                    Quando você veio comigo, me olhou daquele jeito e sorriu, tudo mudou. Cada passo ao seu lado parecia
+                    certo. Você transformou um momento simples em algo inesquecível. Naquele dia, naquele lugar, você me
+                    fez o homem mais feliz do mundo.
+
+                    Nossa série não é perfeita. Tem erros, conflitos e capítulos difíceis. Mas é real. É feita de
+                    aprendizado, carinho e de um amor que, mesmo tropeçando, escolhe continuar.
+
+                    Obrigado por estar comigo, por dividir a vida, os dias e os sonhos. Obrigado por ser meu sorriso
+                    fácil, meu abraço seguro e minha melhor escolha.
+
+                    Eu te amo.
+                    E escolheria começar tudo de novo com você.
+                </p>
+
+                <div class="previewModal-actions">
+                    <button class="assistir">
+                        <i class="fa-regular fa-heart" style="color: #e51515;"></i> Reviver
+                    </button>
+
+                    <button class="icon guardar" title="Guardar">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+
+                    <button class="icon curtir" title="Curtir" data-like-id="momento-1" title="Curtir">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- ===== MODAL DE MÚSICA (COM CONTROLES COMPLETOS) ===== -->
+    <dialog id="hoverMusicModal" class="netflix-modal">
+        <div class="previewModal">
+
+            <button class="closemodal" aria-label="Fechar modal">&times;</button>
+
+            <div class="previewModal-image">
+                <img id="hoverMusicImg" src="" alt="Momento com música">
+            </div>
+
+            <div class="previewModal-content">
+                <h2 class="previewModal-title" id="hoverMusicTitle"></h2>
+
+                <!-- AUDIO (CONTROLADO VIA JS) -->
+                <audio id="hoverMusicAudio"></audio>
+
+                <!-- CONTROLES -->
+                <div class="music-controls">
+
+                    <!-- PLAY / PAUSE -->
+                    <button id="hoverPlayPause" class="previewModalPlayButton">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+
+                    <!-- TEMPO -->
+                    <div class="time-controls">
+                        <span id="currentTime">0:00</span>
+
+                        <input type="range" id="musicProgress" value="0" min="0" max="100">
+
+                        <span id="duration">0:00</span>
+                    </div>
+
+
+
+                </div>
+
+                <!-- 🔥 NOVO BOTÃO: MINHA LISTA -->
+                <div class="previewModal-actions">
+                    <button id="addToMyList" class="assistir">
+                        <i class="fa-solid fa-heart"></i> Minha Lista
+                    </button>
+                    <!-- VOLUME -->
+                    <div class="volume-controls">
+                        <i class="fa-solid fa-volume-high"></i>
+                        <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.7">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </dialog>
+
+    <!-- ===== SEÇÃO MOMENTOS ===== -->
+    <section class="momentos">
+        <h2>nossos momentos</h2>
+
+        <div class="swiper">
+            <div class="swiper-wrapper">
+
+                <!-- CARD COM MÚSICA -->
+                <div class="swiper-slide hover-music" data-id="sparks-coldplay" data-img="./fotos/img2.jpeg"
+                    data-title="Sparks - ColdPlay" data-audio="./audios/musica1.mp3">
+                    <img src="./fotos/img5.jpeg" alt="Nossa Música">
+                </div>
+
+                <div class="swiper-slide hover-music" data-id="outro-momento-1"
+                    data-img="./fotos/WhatsApp Image 2026-01-16 at 19.40.23 (10).JPG" data-title="Pasta - New Rules"
+                    data-audio="./audios/musica2.mp3" >
+                    <img src="./fotos/img6.jpeg" alt="Outro Momento">
+                </div>
+
+                <div class="swiper-slide hover-music" data-id="outro-momento-2" data-img="./fotos/img8.jpeg"
+                    data-title="I Wanna Be Yours - Arctic Monkeys -" data-audio="./audios/audios/Arctic Monkeys - I Wanna Be Yours.mp3">
+                    <img src="./fotos/img7.jpeg" alt="Outro Momento">
+                </div>
+
+                <div class="swiper-slide hover-music" data-id="outro-momento-3" data-img="./fotos/img10.jpeg"
+                    data-title="Magic Shop - BTS" data-audio="./audios/Magic Shop.mp3">
+                    <img src="./fotos/img9.jpeg" alt="Outro Momento">
+                </div>
+
+                <div class="swiper-slide hover-music" data-id="outro-momento-4" data-img="./fotos/imgs3.jpeg"
+                    data-title="Just The Way You Are - Bruno Mars" data-audio="./audios/Just The Way You Are.mp3">
+                    <img src="./fotos/img1.jpeg" alt="Outro Momento">
+                </div>
+
+                <div class="swiper-slide hover-music" data-id="outro-momento-5" data-img="./fotos/imgs4.jpeg"
+                    data-title="Want You - Clara La San" data-audio="./audios/Want You.mp3">
+                    <img src="./fotos/imgs1.jpeg" alt="Outro Momento">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

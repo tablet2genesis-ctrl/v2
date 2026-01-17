@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Lista</title>
+
+    <link rel="icon" href="./fotos/icons8-netflix-24.png">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="./fotos/netflix-94.png" alt="Logo" width="50px">
+        </div>
+
+        <nav>
+            <a href="./index.html">Início</a>
+            <a href="#">Séries</a>
+            <a href="filme.html">Filmes</a>
+            <a href="minhalista.html" class="ativo">Minha lista</a>
+        </nav>
+    </header>
+
+    <!-- ===== CONTEÚDO ===== -->
+    <main class="minha-lista-container">
+
+        <h2>Minha Lista</h2>
+
+        <div class="lista-grid" id="listaGrid"></div>
+
+        <p id="listaVazia" class="lista-vazia">Sua lista está vazia 💔</p>
+
+    </main>
+
+    <!-- ===== MODAL DE MÚSICA (MINHA LISTA) ===== -->
+    <dialog id="hoverMusicModal" class="netflix-modal">
+        <div class="previewModal">
+
+            <button class="closemodal" aria-label="Fechar modal">&times;</button>
+
+            <div class="previewModal-image">
+                <img id="hoverMusicImg" src="" alt="Momento com música">
+            </div>
+
+            <div class="previewModal-content">
+
+                <h2 class="previewModal-title" id="hoverMusicTitle"></h2>
+
+                <audio id="hoverMusicAudio"></audio>
+
+                <div class="music-controls">
+
+                    <button id="hoverPlayPause" class="previewModalPlayButton">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+
+                    <div class="time-controls">
+                        <span id="currentTime">0:00</span>
+                        <input type="range" id="musicProgress" min="0" value="0">
+                        <span id="duration">0:00</span>
+                    </div>
+
+                </div>
+
+                <div class="previewModal-actions">
+
+                    <button id="addToMyList" class="assistir">
+                        <i class="fa-solid fa-heart"></i> Minha Lista
+                    </button>
+
+                    <div class="volume-controls">
+                        <i class="fa-solid fa-volume-high"></i>
+                        <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.7">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </dialog>
+
+
+    <!-- ===== JS DA PÁGINA ===== -->
+    <script>
+        const listaGrid = document.getElementById('listaGrid');
+        const listaVazia = document.getElementById('listaVazia');
+
+        const myList = JSON.parse(localStorage.getItem('myList')) || [];
+
+        if (myList.length === 0) {
+            listaVazia.style.display = 'block';
+        } else {
+            listaVazia.style.display = 'none';
+
+            myList.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('hover-music');
+
+                card.dataset.id = item.id;
+                card.dataset.title = item.title;
+                card.dataset.img = item.img;
+                card.dataset.audio = item.audio;
+
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.title}">
+                    <p>${item.title}</p>
+                `;
+
+                listaGrid.appendChild(card);
+            });
+        }
+    </script>
+
+    <!-- SCRIPT PRINCIPAL (O MESMO DO INDEX) -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

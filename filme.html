@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17/03 Nós</title>
+
+    <link rel="icon" href="./fotos/icons8-netflix-24.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="./fotos/netflix-94.png" alt="Logo" width="50px">
+        </div>
+
+        <nav>
+            <a href="inicio.html">Início</a>
+            <a href="#">Séries</a>
+            <a href="filme.html">Filmes</a>
+            <a href="minhalista.html">Minha lista</a>
+        </nav>
+    </header>
+
+    <section class="banner-filme">
+        <div class="conteudo">
+            <p class="title">Impulso Park</p>
+
+            <div class="detalhes">
+                <span class="tempo">1 hora</span>
+
+                <div class="botoes">
+                    <button type="button" class="reviver openmodal" data-modal="modalReviver">
+                        <i class="fa-regular fa-heart" style="color: #e51515;"></i> Reviver
+                    </button>
+
+
+                    <button class="openmodal" data-modal="modal1">
+                        <i class="fa-solid fa-circle-info"></i> Mais informações
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODAL MOMENTO ESPECIAL ===== -->
+    <dialog id="modal1" class="netflix-modal">
+        <div class="previewModal">
+
+            <button class="closemodal" aria-label="Fechar modal">&times;</button>
+
+            <div class="previewModal-image">
+                <img src="./fotos/logopark.jpeg" alt="Nosso momento especial">
+            </div>
+
+            <div class="previewModal-content">
+                <h2 class="previewModal-title">Impulso Park 💙</h2>
+
+                <div class="previewModal-meta">
+                    <span>17 de março de 2023</span>
+                    <span> • </span>
+                    <span>Momentos especiais</span>
+                </div>
+
+                <p class="previewModal-description">
+                    Um filme sobre leveza, risadas e a felicidade de ser criança outra vez...
+                </p>
+
+                <div class="previewModal-actions">
+                    <button type="button" class="reviver openmodal" data-modal="modalReviver">
+                        <i class="fa-regular fa-heart" style="color: #e51515;"></i> Reviver
+                    </button>
+
+
+                    <button class="icon guardar" title="Guardar">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+
+                    <button class="icon curtir" title="Curtir">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </dialog>
+
+    <!-- ===== MODAL REVIVER (VÍDEO MP4) ===== -->
+    <dialog id="modalReviver" class="netflix-modal">
+        <div class="previewModal">
+
+            <button class="closemodal" aria-label="Fechar modal">&times;</button>
+
+            <div class="previewModal-image">
+                <video id="videoReviver"controls preload="metadata">
+                    <source src="./video/impulso.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeo.
+                </video>
+            </div>
+
+            <div class="previewModal-content">
+                <h2 class="previewModal-title">fucking video 💙</h2>
+            </div>
+
+        </div>
+    </dialog>
+
+
+    <section class="momentos">
+        <h2>26 de Outubro de 2024</h2>
+
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./fotos/cubos.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="./fotos/pe.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="./fotos/uspark.jpeg" alt=""></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
